@@ -73,7 +73,7 @@ class WickedPdf
     command << url
     command << generated_pdf_file.path.to_s
 
-    print_command(command.inspect) if in_development_mode?
+    print_command(command.inspect) if verbose_logging?
 
     err = Open3.popen3(*command) do |_stdin, _stdout, stderr|
       stderr.read
@@ -94,6 +94,11 @@ class WickedPdf
   end
 
   private
+
+  def verbose_logging?
+    return true if WickedPdf.config[:verbose_logging]
+    in_development_mode?
+  end
 
   def in_development_mode?
     return Rails.env == 'development' if defined?(Rails.env)
