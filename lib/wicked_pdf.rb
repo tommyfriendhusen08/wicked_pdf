@@ -60,7 +60,7 @@ class WickedPdf
     pdf = pdf_from_html_file(string_file.path, options)
     pdf
   ensure
-    string_file.close! if string_file
+    # string_file.close! if string_file
   end
 
   def pdf_from_url(url, options = {})
@@ -91,7 +91,7 @@ puts command.join(' ')
   rescue StandardError => e
     raise "Failed to execute:\n#{command}\nError: #{e}"
   ensure
-    generated_pdf_file.close! if generated_pdf_file && !return_file
+    # generated_pdf_file.close! if generated_pdf_file && !return_file
   end
 
   private
