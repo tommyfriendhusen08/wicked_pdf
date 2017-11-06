@@ -72,7 +72,8 @@ class WickedPdf
     command += parse_options(options)
     command << url
     command << generated_pdf_file.path.to_s
-
+puts "WickedPdf:"
+puts command.join(' ')
     print_command(command.inspect) if verbose_logging?
 
     err = Open3.popen3(*command) do |_stdin, _stdout, stderr|
