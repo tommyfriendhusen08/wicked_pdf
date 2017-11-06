@@ -71,7 +71,7 @@ class WickedPdf
 
     def clean_temp_files
       return unless defined?(@hf_tempfiles)
-      @hf_tempfiles.each(&:close!)
+      # @hf_tempfiles.each(&:close!)
     end
 
     def make_pdf(options = {})
